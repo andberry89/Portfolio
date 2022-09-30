@@ -8,4 +8,4 @@ This is a website designed to showcase keyboard controls and use of cookies with
 
 NOTE: Hyperlinks do not go anywhere.
 
-https://andrewberry.me/portfolio/project6/data-gather.html
+https://andrewberry.me/portfolio/data-gather/grid_view.html
