@@ -3,9 +3,9 @@ const chalk = require('chalk');
 
 const addNote = (title, body) => {
     const notes = loadNotes();
-    const duplicateNote = notes.find((note) => note.title === title);
+    const duplicateNote = notes.find((note) => note.title === title); // check to make sure the title of the new note is not already taken
 
-    if (!duplicateNote){
+    if (!duplicateNote){    // if no duplicate is found we can add the note
         notes.push({
             title: title,
             body: body
@@ -21,17 +21,17 @@ const addNote = (title, body) => {
 
 const removeNote = (title) => {
     const notes = loadNotes();
-    const newNotes = notes.filter((note) => note.title !== title);
+    const newNotes = notes.filter((note) => note.title !== title); // create a new array of notes excluding the one we want to remove
 
-    if (newNotes.length < notes.length){
+    if (newNotes.length < notes.length){    // if the new array is shorter, then we've found a match and can save the new array
         saveNotes(newNotes);
         console.log(chalk.green.inverse('Note removed!'));
-    } else {
+    } else {                                // if they're the same length, no action is needed because that title is not found
         console.log(chalk.red.inverse('No note found!'));
     }
 }
 
-const loadNotes = () => {
+const loadNotes = () => {   // load data from the JSON file
     try {
         const dataBuffer = fs.readFileSync('notes.json');
         const dataJSON = dataBuffer.toString();
@@ -41,7 +41,7 @@ const loadNotes = () => {
     }
 };
 
-const saveNotes = (notes) => {
+const saveNotes = (notes) => { 
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON);
 };
